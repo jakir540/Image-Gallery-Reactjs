@@ -5,7 +5,6 @@ import Gallery from "../Gallery/Gallery";
 const Home = () => {
   return (
     <div>
-      <Header></Header>
       <Gallery></Gallery>
     </div>
   );
