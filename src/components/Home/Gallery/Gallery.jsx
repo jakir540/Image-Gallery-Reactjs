@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import images from "/public/image.json";
 import AddImage from "../../AddImage/AddImage";
 import Header from "../../Header/Header";
+import "./Gallery.css";
 
 const Gallery = () => {
   const [gallery, setGallery] = useState(images);
@@ -58,47 +59,49 @@ const Gallery = () => {
   return (
     <>
       <Header countClicked={countClicked} onDelete={onDelete}></Header>
-      <div className="">
-        <div className=" relative grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1 lg:gap-6 md:gap-3 justify-center">
-          {gallery.map((img, index) => (
-            <div
-              onDragStart={(e) => handleDragStart(e, index)}
-              // onDragStart={(e) => handleDragStart(e, index)}
-              onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, index)}
-              draggable={true}
-              key={img.id}
-              className={`border border-spacing-3 shadow-xl relative rounded-md cursor-pointer ${
-                index === 0 ? "col-span-2 row-span-2" : ""
-              }`}
-              onClick={() => handleClick(index)}
-            >
-              <figure className="p-3 mx-auto">
-                <img
-                  src={img.image}
-                  alt="Headphone"
-                  className={`rounded-xl ${
-                    index === 0 ? "w-[400] h-[400]" : "w-[200px]"
-                  }`}
-                />
-              </figure>
 
-              <div className="absolute top-5 left-5">
-                <label>
-                  <input
-                    className="w-5 h-5"
-                    type="checkbox"
-                    checked={checkedImage.includes(index)}
-                    onChange={() => handleClick(index)}
-                  />
-                </label>
-              </div>
+      <div className=" relative grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1 lg:gap-6 md:gap-3 justify-center">
+        {gallery.map((img, index) => (
+          <div
+            onDragStart={(e) => handleDragStart(e, index)}
+            onDragOver={handleDragOver}
+            onDrop={(e) => handleDrop(e, index)}
+            draggable={true}
+            key={img.id}
+            className={`container border border-spacing-3 shadow-xl relative rounded-md cursor-pointer ${
+              index === 0 ? "col-span-2 row-span-2" : ""
+            } `}
+            onClick={() => handleClick(index)}
+          >
+            <figure className="p-3 mx-auto">
+              <img
+                src={img.image}
+                alt="Headphone"
+                className={`rounded-x ${
+                  index === 0 ? "w-[400] h-[400]" : "w-[200px]"
+                }`}
+              />
+            </figure>
+
+            <div className="overlay">
+              <div className="content"></div>
             </div>
-          ))}
-        </div>
 
-        <AddImage></AddImage>
+            <div className="absolute top-5 left-5">
+              <label>
+                <input
+                  className="w-5 h-5"
+                  type="checkbox"
+                  checked={checkedImage.includes(index)}
+                  onChange={() => handleClick(index)}
+                />
+              </label>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <AddImage></AddImage>
     </>
   );
 };

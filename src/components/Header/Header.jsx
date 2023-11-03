@@ -6,7 +6,7 @@ const Header = (props) => {
 
   return (
     <>
-      <div className="flex h-20 items-center ">
+      <div className="lg:flex h-20 items-center ">
         <div>
           {isFileselected ? (
             ""
@@ -37,11 +37,18 @@ const Header = (props) => {
         )}
       </div>
 
-      <div className="text-right ">
-        <h3 onClick={props.onDelete} className="text-2xl cursor-pointer font-bold text-red-600 mt-[-50px] pb-3">
-          Delete File
-        </h3>
-      </div>
+      {isFileselected ? (
+        <div className="text-right ">
+          <h3
+            onClick={props.onDelete}
+            className="text-2xl cursor-pointer font-bold text-red-600 mt-[-50px] pb-3"
+          >
+            Delete File
+          </h3>
+        </div>
+      ) : (
+        ""
+      )}
       <hr className="py-4" />
     </>
   );
