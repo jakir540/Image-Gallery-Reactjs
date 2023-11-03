@@ -60,7 +60,7 @@ const Gallery = () => {
     <>
       <Header countClicked={countClicked} onDelete={onDelete}></Header>
 
-      <div className="p-5 relative grid grid-cols-1 bg-slate-400 md:grid-cols-3 lg:grid-cols-5  lg:gap-6 md:gap-3 justify-center">
+      <div className="p-5 relative grid grid-cols-2  md:grid-cols-3 lg:grid-cols-5  lg:gap-6 md:gap-3 gap-2 justify-center">
         {gallery.map((img, index) => (
           <div
             onDragStart={(e) => handleDragStart(e, index)}
