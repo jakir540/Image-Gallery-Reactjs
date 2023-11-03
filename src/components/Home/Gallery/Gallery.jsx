@@ -99,9 +99,8 @@ const Gallery = () => {
             </div>
           </div>
         ))}
-      <AddImage></AddImage>
+        <AddImage></AddImage>
       </div>
-
     </>
   );
 };
